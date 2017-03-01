@@ -1,16 +1,39 @@
-import Hapi from 'hapi';
-const server = new Hapi.Server();
+var Hapi = require('hapi')
+var Vision = require('vision')
+var server = new Hapi.Server()
 
 server.connection({
 	port: 8000
 });
 
+
+// register vision to your server instance
+server.register(Vision, function (err) {  
+  if (err) {
+    console.log('Cannot register vision')
+  }
+
+  // configure template support   
+  server.views({
+    engines: {
+      html: require('handlebars')
+    },
+    path: __dirname + '/views',
+    layoutPath: 'src/views/layout',
+    layout: 'default'
+  })
+})
+
 server.route({
 
 	method: 'GET',
-	path: '/hello',
-	handler: (request, reply) => {
-		reply('Hello World!');
+	path: '/',
+	handler: function(request, reply){
+		var data = {
+			title: 'Home',
+			message: 'Este es el home'
+		};
+		return reply.view('index',data);
 	}
 });
 
@@ -24,4 +47,4 @@ server.start(err => {
 	}
 
 	console.log( `Server started at ${ server.info.uri }` );
-});
+})
