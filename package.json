@@ -1,0 +1,25 @@
+{
+  "name": "sded",
+  "version": "1.0.0",
+  "description": "Proyecto de sistemas de informacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bootstrap.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rquintero96/SistemaEvaluacionDocente.git"
+  },
+  "author": "Reynaldo Quintero, Miguel Moreton y Asher Kleiman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rquintero96/SistemaEvaluacionDocente/issues"
+  },
+  "homepage": "https://github.com/Rquintero96/SistemaEvaluacionDocente#readme",
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-preset-es2015": "^6.22.0",
+    "hapi": "^16.1.0"
+  }
+}
