@@ -45,6 +45,14 @@ server.route({
     }
 });
 
+server.route({
+    method: 'GET',
+    path: '/login',
+    handler: function (request, reply) {
+        reply.view('login');
+    }
+});
+
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
 	if(err){
