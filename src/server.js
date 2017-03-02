@@ -37,6 +37,14 @@ server.route({
 	}
 });
 
+server.route({
+    method: 'GET',
+    path: '/registro-estudiantil',
+    handler: function (request, reply) {
+        reply.view('registro-estudiantil');
+    }
+});
+
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
 	if(err){
