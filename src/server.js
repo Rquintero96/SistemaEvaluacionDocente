@@ -37,6 +37,25 @@ server.route({
 	}
 });
 
+//Esto permite los archivos estaticos
+server.register(require('inert'), function(err){
+	if(err){
+		throw err;
+	}
+	server.route({
+	    method: 'GET',
+	    path: '/src/resources/{path*}',
+	    handler: {
+	       directory: {
+	       	path: './src/resources',
+	       	listing: false,
+	       	index: false
+	        }
+    	}
+});
+});
+
+
 server.start(err => {
 
 	if(err){
