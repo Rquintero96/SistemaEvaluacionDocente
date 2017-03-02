@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro Estudiantil</title>
+</head>
+<body>
+{{!< layout/default}}
+{{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
+
+
+<div>
+<div class="materialContainer" style="text-align: center;">
+
+
+   <div class="box" align="center">
+
+      <div class="title">Ingresa</div>
+
+    <!-- Textfield with Floating Label -->
+    	<div>
+		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="email">
+		    <label class="mdl-textfield__label" for="sample3">Correo</label>
+		  </div>
+		</div>
+
+      	<div>
+      	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="password" id="Contraseña">
+		    <label class="mdl-textfield__label" for="sample3">Contraseña</label>
+		  </div>
+	    </div>
+      
+      <div class="button login">
+         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/">
+  		 ¡Entrar!
+		 </button>
+      </div>
+      <div style="margin-top: 20px;">
+      	¿No tienes cuenta todavia? <a href="/registro-estudiantil"> ¡Registrate ya!</a>
+      </div>
+   </div>
+
+</div>
+</div>
+
+
+</body>
+</html>
