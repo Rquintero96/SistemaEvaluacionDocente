@@ -1,0 +1,40 @@
+.box { 
+   position: absolute;
+   top:0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   opacity: 1;
+   float: center;
+   padding: 60px 50px 40px 50px;
+   width: 50%;
+   height: 40%;
+   background: #E7EAED;
+   border-radius: 10px;
+   transform: scale(1);
+   -webkit-transform: scale(1);
+   -ms-transform: scale(1);
+   z-index: 5;
+}
+
+.title {
+   width: 100%;
+   float: left;
+   line-height: 46px;
+   font-size: 34px;
+   font-weight: 700;
+   letter-spacing: 2px;
+   color: #ff3f1f;
+   position: relative;
+}
+
+.title:before {
+   content: "";
+   width: 5px;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   left: -50px;
+   background: #E7EAED;
+}
