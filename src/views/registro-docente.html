@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro Docente</title>
+</head>
+<body>
+{{!< layout/default}}
+{{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
+
+
+<div>
+<div class="materialContainer" style="text-align: center;">
+
+
+   <div class="box" align="center" style="height: 100%">
+   <div class="content-grid mdl-grid">
+
+      <div class="title">Registra al nuevo docente</div>
+
+    <!-- Textfield with Floating Label -->
+    <div class="mdl-cell mdl-cell--6-col" align="center" style="margin: auto;">
+    	<div>
+    	<h3 style="color: #ff3f1f">Datos Personales</h3>
+		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="number" id="nombre">
+		    <label class="mdl-textfield__label" for="sample3">Nombre</label>
+		  </div>
+		</div>
+		<div>
+		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="number" id="apellido">
+		    <label class="mdl-textfield__label" for="sample3">Apellido</label>
+		  </div>
+		</div>
+		<div>
+		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="number" id="carnet">
+		    <label class="mdl-textfield__label" for="sample3">Carnet</label>
+		  </div>
+		</div>
+		<div>
+		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="email">
+		    <label class="mdl-textfield__label" for="sample3">Correo</label>
+		  </div>
+		</div>
+		 <div>
+      	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="password" id="contra">
+		    <label class="mdl-textfield__label" for="sample3">Contraseña</label>
+		  </div>
+	    </div>
+	    </div>
+	    </div>
+	    <div class="content-grid mdl-grid">
+	    <div class="mdl-cell mdl-cell--6-col">
+		<div>
+		<h3 style="color: #ff3f1f">Departamentos</h3>
+		<div class="mdl-textfield mdl-js-textfield">
+                  Ingrese los departamentos a los que el profesor pertenece: (separado por comas, sin espacios)<br>
+                  <textarea class="mdl-textfield__input" type="text" rows= "5" id="departamentos" maxlength="400"></textarea><br>
+                </div><br>
+		</div>
+		</div>
+		<div class="mdl-cell mdl-cell--6-col">
+		<div>
+		<h3 style="color: #ff3f1f">Clases</h3>
+		<div class="mdl-textfield mdl-js-textfield">
+                  Ingrese los códigos de las clases que el profesor imparte: (separado por comas, sin espacios)<br>
+                  <textarea class="mdl-textfield__input" type="text" rows= "5" id="clases" maxlength="400"></textarea><br>
+                </div><br>
+		</div>
+		</div>
+<div align="center" style="width: 100%;">
+      <div class="button login">
+         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  		 ¡Listo!
+		 </button>
+		 </div>
+      </div>
+   </div>
+   </div>
+
+</div>
+<div>
+
+
+</body>
+</html>

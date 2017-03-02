@@ -38,3 +38,7 @@
    left: -50px;
    background: #E7EAED;
 }
+
+.content-grid {
+  max-width: 960px;
+}
