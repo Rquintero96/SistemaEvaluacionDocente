@@ -42,3 +42,7 @@
 .content-grid {
   max-width: 960px;
 }
+
+.enviarEvaluacionA, .enviarEvaluacionB, .editarEvaluacion{
+   display: none;
+}

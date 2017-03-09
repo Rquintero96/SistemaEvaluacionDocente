@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Evaluación A</title>
+</head>
+<body>
+{{!< layout/default}}
+{{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
+
+
+<div>
+<div class="materialContainer" style="text-align: center;">
+  <h1>Evaluacion</h1>
+
+<div style="font-weight: bold" id="nombreEvaluado"></div> <!-- Insertar con jquery el nombre del profesor -->
+<div style="font-weight: bold" id="periodo"></div><!-- Insertar con jquery la materia y el código -->
+<div style="font-weight: bold" id="cargo"></div><!-- Insertar con jquery la sección -->
+<div style="font-weight: bold" id="departamento"></div><!-- Insertar con jquery la sección -->
+<div style="font-weight: bold" id="nombreEvaluador"></div><!-- Insertar con jquery la sección -->
+<div> En una escala de evaluación continua de 5 a 1, donde 5 significa que la presencia del factor es ALTAMENTE SATISFACTORIA y 1 que la presencia del factor es INSATISFACTORIA, califique al evaluado en cualquier punto de esa escala (puede trabajar con decimales) y coloque el puntaje en la casilla correspondiente. En caso de no aplicar alguno(s) de los factores, calificar con 0.
+</div>
+
+<div align="center" id="tablaEvaluacion"> <!-- Tabla a ser generada utilizando la base de datos, habrá que definirla en javascript, con input type number y min=0 y max=5-->
+</div>
+
+<div>
+Comentarios del Evaluador:
+<div class="mdl-textfield mdl-js-textfield">
+    <textarea class="mdl-textfield__input" type="text" rows= "3" id="comentario" ></textarea>
+    <label class="mdl-textfield__label" for="sample5">Comentarios...</label>
+  </div>
+</div>
+<div>
+Fecha:
+<input type="date" name="fecha">
+</div>
+   <div align="center" style="text-align: center;">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="">
+        Entregar
+      </button>
+      <div class="mdl-spinner mdl-js-spinner is-active" id="enviarEvaluacionA">
+      </div>
+   </div>
+  <div align="center" style="text-align: center;" id="editarEvaluacion"> <!-- Botón solo disponible a quienes puedan editar la evaluación, queda por definir cómo se hará esto-->
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="">
+        Editar instrumento
+      </button>
+   </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

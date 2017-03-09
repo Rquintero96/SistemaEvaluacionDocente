@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Principal</title>
+</head>
+<body>
+{{!< layout/default}}
+{{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
+
+
+<div>
+<div class="materialContainer" style="text-align: center;">
+<<select id="combo-box">
+  <!-- Aquí irían los profesores a seleccionar para el vicerrectorado y los jefes de departamento, que se habilitaría con jquery u otra herramienta. Se pone cada uno con "<option>"-->
+</select>
+<table id="tabla-principal"> <!-- esta tabla será modificada con jquery u otra herramienta cuando se sepa el tipo de usuario que ingresa a la vista -->
+<!-- Para profesores: 
+    primera columna: materia y sección
+    segunda columna: posibilidad de realizar autoevaluación (llevará a la vista evaluación tipo A) 
+    tercera columna: posibilidad de visualizar resultado de evaluaciones (llevará a la vista resultados, una vez que lo permita el jefe de departamento) -->
+<!-- Para alumnos: 
+    primera columna: materia y sección
+    segunda columna: posibilidad de realizar evaluación (llevará a la vista evaluación tipo B) 
+    tercera columna: posibilidad de visualizar disponibilidad de realizar la evaluación, es decir, si ya se hizo, si aun no está disponible o si lo está pero no se ha realizado -->
+<!-- Para Jefes de departamento: 
+    primera columna: materia y sección del profesor seleccionado
+    segunda columna: posibilidad de realizar evaluación (llevará a la vista evaluación tipo A) 
+    tercera columna: posibilidad de liberar resultado de evaluación al profesor 
+    cuarta columna: posibilidad de ver resultados de encuestas estudiantes y autoevaluación del profesor (llevará a una vista reporte) -->
+<!-- Para Vicerrectorado: 
+    primera columna: materia y sección del profesor seleccionado
+    segunda columna: posibilidad de ver resultados de encuestas estudiantes y autoevaluación del profesor (llevará a una vista reporte)
+    tercera columna: permitirá modificar el rango del profesor en el sistema -->
+</table>
+</div>
+
+</div>
+
+</body>
+</html>

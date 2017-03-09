@@ -12,30 +12,71 @@
 <div class="materialContainer" style="text-align: center;">
   <h1>Evaluacion</h1>
 
-<div align="center">
+<div style="font-weight: bold" id="nombre"></div> <!-- Insertar con jquery el nombre del profesor -->
+<div style="font-weight: bold" id="materia"></div><!-- Insertar con jquery la materia y el código -->
+<div style="font-weight: bold" id="seccion"></div><!-- Insertar con jquery la sección -->
+<div> Evalúe los siguientes aspectos del profesor en este curso, puntuando cada aspecto del 1 al 4, siendo 1 total desacuerdo y siendo 4 total acuerdo, de forma que mejor se refleje su parecer con la afirmación planteada. Esta encuesta es anónima y de caracter confidencial.</div>
 
+<div align="center">
     <table class="mdl-data-table mdl-js-data-table" style="width: 80%;">
       <thead>
         <tr>
-          <th class="mdl-data-table__cell--non-numeric">Pregunta</th>
+          <th class="mdl-data-table__cell--non-numeric">El profesor:</th>
           <th style="width: 10%;">Respuesta</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="mdl-data-table__cell--non-numeric">Pregunta 1</td>
-          <td><input class="mdl-textfield__input" type="text" id="resp1" maxlength="1"></td>
+          <td class="mdl-data-table__cell--non-numeric">Comunica los temas de manera comprensible</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp1" min="1" max="4"></td>
         </tr>
         <tr>
-          <td class="mdl-data-table__cell--non-numeric">Pregunta 2</td>
-          <td><input class="mdl-textfield__input" type="text" id="resp2" maxlength="1"></td>
+          <td class="mdl-data-table__cell--non-numeric">Explica en detalle los contenidos de la materia</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp2" min="1" max="4"></td>
         </tr>
         <tr>
-          <td class="mdl-data-table__cell--non-numeric">Pregunta 3</td>
-          <td><input class="mdl-textfield__input" type="text" id="resp3" maxlength="1"></td>
+          <td class="mdl-data-table__cell--non-numeric">Enriquece las exposiciones con ejemplos de interés</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp3" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Relaciona sistemáticamente los contenidos con los objetivos de la asignatura</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp4" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Ofrece materiales que propician el aprendizaje</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp5" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Aclara las dudas que se presentan a lo largo del curso</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp6" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Establece y comunica previamente los planes de evaluación</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp7" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Brinda oportunamente retroalimentación sobre los resultados de las evaluaciones</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp8" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Conduce la interacción grupal y estimula la argumentación en los integrantes del grupo</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp9" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Incentiva la búsqueda de información complementaria para el curso</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp10" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Mantiene en esta asignatura un balance entre diferentes actividades: discusiones teóricas, sesiones prácticas, apicaciones diversas y relacionadas con la asignatura</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp11" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">Propicia la responsabilidad y la modela con su conducta</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp12" min="1" max="4"></td>
         </tr>
       </tbody>
     </table>
+    
    </div>
 
 </div>

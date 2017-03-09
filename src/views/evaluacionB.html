@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Evaluación B</title>
+</head>
+<body>
+{{!< layout/default}}
+{{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
+
+
+<div>
+<div class="materialContainer" style="text-align: center;">
+  <h1>Evaluacion</h1>
+
+<div style="font-weight: bold" id="nombre"></div> <!-- Insertar con jquery el nombre del profesor -->
+<div style="font-weight: bold" id="materia"></div><!-- Insertar con jquery la materia y el código -->
+<div style="font-weight: bold" id="seccion"></div><!-- Insertar con jquery la sección -->
+<div> Evalúe los siguientes aspectos del profesor en este curso, puntuando cada aspecto del 1 al 4, siendo 1 total desacuerdo y siendo 4 total acuerdo, de forma que mejor se refleje su parecer con la afirmación planteada. Esta encuesta es anónima y de caracter confidencial.</div>
+
+<div align="center" id="tablaEvaluacion"> <!-- Tabla a ser generada utilizando la base de datos, habrá que definirla en javascript, con input type number y min=1 y max=4 -->
+
+<!-- SI SE VA A USAR ESTO, QUITEN LOS "BORRA"-->
+
+<!--     <table class="mdl-data-table mdl-js-data-table" style="width: 80%;">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell-BORRA-non-numeric">El profesor:</th>
+          <th style="width: 10%;">Respuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Comunica los temas de manera comprensible</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp1" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Explica en detalle los contenidos de la materia</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp2" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Enriquece las exposiciones con ejemplos de interés</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp3" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Relaciona sistemáticamente los contenidos con los objetivos de la asignatura</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp4" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Ofrece materiales que propician el aprendizaje</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp5" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Aclara las dudas que se presentan a lo largo del curso</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp6" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Establece y comunica previamente los planes de evaluación</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp7" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Brinda oportunamente retroalimentación sobre los resultados de las evaluaciones</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp8" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Conduce la interacción grupal y estimula la argumentación en los integrantes del grupo</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp9" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Incentiva la búsqueda de información complementaria para el curso</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp10" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Mantiene en esta asignatura un balance entre diferentes actividades: discusiones teóricas, sesiones prácticas, apicaciones diversas y relacionadas con la asignatura</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp11" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Propicia la responsabilidad y la modela con su conducta</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp12" min="1" max="4"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div> Evalúe los siguientes aspectos del profesor en este curso, puntuando cada aspecto del 1 al 4, siendo 1 bajo y siendo 4 alto, de forma que mejor se refleje su parecer con la afirmación planteada. Esta encuesta es anónima y de caracter confidencial.</div>
+
+    <table class="mdl-data-table mdl-js-data-table" style="width: 80%;">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell-BORRA-non-numeric">Aspectos complementarios:</th>
+          <th style="width: 10%;">Respuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">En general, la calidad docente del profesor es</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp13" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Su disposición a tomar otro curso con este profesor es</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp14" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Su aprovechamiento de esta materia como estudiante está siendo</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp15" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">Su dedicación y esfuerzo como estudiante este curso está siendo</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp16" min="1" max="4"></td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell-BORRA-non-numeric">El texto y la bibliografía sugerida es adecuada, útil</td>
+          <td><input class="mdl-textfield__input" type="number" id="resp17" min="1" max="4"></td>
+        </tr>
+      </tbody>
+    </table> -->
+   </div>
+   <div align="center" style="text-align: center;">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="">
+        Entregar
+      </button>
+      <div class="mdl-spinner mdl-js-spinner is-active" id="enviarEvaluacionB">
+      </div>
+   </div>
+  <div align="center" style="text-align: center;" id="editarEvaluacion"> <!-- Botón solo disponible a quienes puedan editar la evaluación, queda por definir cómo se hará esto-->
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="">
+        Editar instrumento
+      </button>
+   </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

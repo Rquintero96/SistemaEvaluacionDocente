@@ -77,6 +77,30 @@ server.route({
     }
 });
 
+server.route({
+    method: 'GET',
+    path: '/evaluacion-A',
+    handler: function (request, reply) {
+        reply.view('evaluacionA');
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/evaluacion-B',
+    handler: function (request, reply) {
+        reply.view('evaluacionB');
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/dashboard',
+    handler: function (request, reply) {
+        reply.view('principalGeneral');
+    }
+});
+
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
 	if(err){
