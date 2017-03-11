@@ -1,4 +1,6 @@
+//Inicio de Hapi
 var Hapi = require('hapi')
+//Inicio de Vision
 var Vision = require('vision')
 var controllers = require('./controllers')
 var models = require('./models')
@@ -88,83 +90,8 @@ server.register(BasicAuth, function (err) {
 
 /*Modulo donde se definen las rutas de la aplicacion y permite ir de vista en vista. 
 Al agregar un view hay que agergar una nueva ruta en esta sesion*/
-server.route({
-
-	method: 'GET',
-	path: '/',
-	handler: function(request, reply){
-		var data = {
-			title: 'Home',
-			message: 'Este es el home'
-		};
-		return reply.view('index',data);
-	}
-});
-
-server.route({
-    method: 'GET',
-    path: '/registro-estudiantil',
-    handler: function (request, reply) {
-        reply.view('registro-estudiantil');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/registro-docente',
-    handler: function (request, reply) {
-        reply.view('registro-docente');
-    }
-});
-
-
-server.route({
-    method: 'GET',
-    path: '/login',
-    handler: function (request, reply) {
-        reply.view('login');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/evaluacion',
-    handler: function (request, reply) {
-        reply.view('evaluacion');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/home',
-    handler: function (request, reply) {
-        reply.view('home');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/evaluacion-A',
-    handler: function (request, reply) {
-        reply.view('evaluacionA');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/evaluacion-B',
-    handler: function (request, reply) {
-        reply.view('evaluacionB');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/dashboard',
-    handler: function (request, reply) {
-        reply.view('principalGeneral');
-    }
-});
+var routes = require('./rutas')
+server.route(routes)
 
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
