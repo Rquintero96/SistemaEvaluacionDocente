@@ -182,48 +182,6 @@ server.register(require('inert'), function(err){
     });
 });
 
-// Modulo de Cookies
-server.register(CookieAuth, function (err) {
-
-  server.auth.strategy('session', 'cookie', options) // your TODO: options -> there are required ones
-
-  // start your server after plugin registration
-  server.start(function (err) {
-    console.log('info', 'Server running at: ' + server.info.uri)
-  })
-})
-
-server.route({  
-  method: 'GET',
-  path: '/private-route',
-  config: {
-    auth: 'session',
-    handler: function (request, reply) {
-      reply('Yeah! This message is only available for authenticated users!')
-    }
-  }
-})
-
-server.route({  
-  method: 'POST',
-  path: '/login',
-  config: {
-    handler: function (request, reply) {
-      var username = request.payload.username
-      var password = request.payload.password
-
-      // check if user exists in DB
-      // compare passwords
-
-      // if everything went smooth, set the cookie with "user" specific data
-      request.cookieAuth.set(user);
-
-      reply('Wohoo, great to see you')
-    }
-  }
-})
-
-
 server.start(err => {
 
 	if(err){
