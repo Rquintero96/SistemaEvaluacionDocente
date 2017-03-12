@@ -1,5 +1,6 @@
 var Hapi = require('hapi')
 var Vision = require('vision')
+var controllers = require('./controllers')
 
 //Inicializa el modulo de autentificacion
 var BasicAuth = require('hapi-auth-basic')
