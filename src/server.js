@@ -194,3 +194,16 @@ server.start(err => {
 
 	console.log( `Server started at ${ server.info.uri }` );
 })
+
+
+
+//EJEMPLO DE COMO USAR UN CONTROLADOR (según lo que entendí)!!!!!!!!!!!!!!!!!!!!
+//          
+//         server.route({
+//             method: 'GET',
+//             path: '/tasks/{task_id}',
+//             config : {
+//                 handler: taskController.findByID,
+//                 validate: taskValidate.findByID
+//             }
+// });
