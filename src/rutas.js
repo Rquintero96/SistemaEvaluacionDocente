@@ -2,17 +2,17 @@ var Boom = require('boom')
 var Bcrypt = require('bcrypt')
 
 var routes = [
-{
-	method: 'GET',
-	path: '/',
-	handler: function(request, reply){
-		var data = {
-			title: 'Home',
-			message: 'Este es el home'
-		};
-		return reply.view('index',data);
-	}
-},
+     {
+    method: 'GET',
+    path: '/',
+    handler: function (request, reply) {
+      var data = {
+        message: 'Check the route that requires auth at /basic'
+      }
+
+      reply.view('index', data)
+    }
+  },
 {
     method: 'GET',
     path: '/registro-estudiantil',
@@ -68,7 +68,24 @@ var routes = [
     handler: function (request, reply) {
         reply.view('principalGeneral');
     }
-}
+},
+{
+    method: 'GET',
+    path: '/perfil',
+    config: {
+      auth: 'simple',
+      handler: function (request, reply) {
+        reply.view('perfil')
+      }
+    }
+  },
+  {
+    method: 'GET',
+    path: '/logout',
+    handler: function (request, reply) {
+        reply.view('index').code(401);
+    },
+  }
 ]
 
 module.exports = routes
