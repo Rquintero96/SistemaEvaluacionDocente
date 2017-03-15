@@ -25,8 +25,11 @@
     "hapi": "^16.1.0",
     "hapi-auth-basic": "^4.2.0",
     "hapi-auth-cookie": "^6.1.1",
+    "hapi-sequelize-models": "^1.0.0",
     "hapi-swagger": "^7.7.0",
     "inert": "^4.1.0",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.2",
     "vision": "^4.1.1"
   },
   "devDependencies": {
