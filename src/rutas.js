@@ -72,7 +72,6 @@ var routes = [
     }
 },
 {
-<<<<<<< HEAD
     method: 'GET',
     path: '/perfil',
     config: {
@@ -87,9 +86,9 @@ var routes = [
     path: '/logout',
     handler: function (request, reply) {
         reply.view('index').code(401);
-    },
-  }
-
+    }
+  },
+  {
     method:'GET',
     path:'/db',
     handler: function(request, reply){
