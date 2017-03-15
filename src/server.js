@@ -26,7 +26,7 @@ var users = {
 
 //Conexion del servidor
 server.connection({
-	port: 8000
+	port: 8080
 });
 
 
