@@ -2,17 +2,18 @@
 var Hapi = require('hapi')
 //Inicio de Vision
 var Vision = require('vision')
+//Controaldores
 var controllers = require('./controllers')
+//Modelos
 var models = require('./models')
-
 //Inicializa el modulo de autentificacion
 var BasicAuth = require('hapi-auth-basic')
-    //y esta es la herramienta para las validaciones a usar
-    var Bcrypt = require('bcrypt')
-
+//y esta es la herramienta para las validaciones a usar
+var Bcrypt = require('bcrypt')
 //Modulo para almacenar informacion a traves de la pagina
 var CookieAuth = require('hapi-auth-cookie')  
 
+//creando nuevo servidor
 var server = new Hapi.Server()
 
 ///DEMOSTRACION///
@@ -31,15 +32,28 @@ server.connection({
 	port: 8080
 });
 
-
-// register vision to your server instance
-server.register(Vision, function (err) {  
-    //Si ocurre algun error
+server.register([
+  {
+    register: Vision
+  },
+  {
+    register: BasicAuth
+  },
+  {
+    register: CookieAuth
+  }
+], function (err) {
   if (err) {
-    console.log('Cannot register vision')
+    server.log('error', 'failed to install plugins')
+
+    throw err
   }
 
-  // configure template support   
+  server.log('info', 'Plugins registered')
+
+  /**
+   * view configuration
+   */
   server.views({
     engines: {
       html: require('handlebars')
@@ -48,50 +62,35 @@ server.register(Vision, function (err) {
     layoutPath: 'src/views/layout',
     layout: 'default'
   })
-})
+  server.log('info', 'View configuration completed')
 
-// Modulo para la verificacion de usuario
-server.register(BasicAuth, function (err) {
-
-     if (err) {
-        throw err
-        console.log('Menor hubo un error en el modulo de validacion')
-    }
-
-    // validation function used for hapi-auth-basic
-  var basicValidation  = function (request, username, password, callback) {
-    var user = users[ username ]
+  // validation function used for hapi-auth-cookie: optional and checks if the user is still existing
+  /*var validation = function (request, session, callback) {
+    var username = session.username
+    var user = Users[ username ]
 
     if (!user) {
       return callback(null, false)
     }
 
-    Bcrypt.compare(password, user.password, function (err, isValid) {
-      callback(err, isValid, { id: user.id, name: user.name })
-    })
+    server.log('info', 'user authenticated')
+    callback(err, true, user)
   }
 
-  //Estrategia a usar para la validacion
-  server.auth.strategy('simple', 'basic', { validateFunc: basicValidation })
+  server.auth.strategy('session', 'cookie', true, {
+    password: 'm!*"2/),p4:xDs%KEgVr7;e#85Ah^WYC',
+    cookie: 'future-studio-hapi-tutorials-cookie-auth-example',
+    redirectTo: '/',
+    isSecure: false,
+    validateFunc: validation
+  })*/
 
-  //Ruta protegida
-  server.route({
-    method: 'GET',
-    path: '/prueba',
-    config: {
-    auth: 'simple',
-    handler: function (request, reply) {
-      reply('Si menor este mensaje solo lo pueden ver los usuarios autentificados plo plo');
-    }
-  }
-});
+  server.log('info', 'Registered auth strategy: cookie auth')
+
+  var routes = require('./rutas')
+  server.route(routes)
+  server.log('info', 'Routes registradas')
 })
-
-
-/*Modulo donde se definen las rutas de la aplicacion y permite ir de vista en vista. 
-Al agregar un view hay que agergar una nueva ruta en esta sesion*/
-var routes = require('./rutas')
-server.route(routes)
 
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
