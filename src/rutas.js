@@ -89,7 +89,7 @@ var routes = [
         reply.view('index').code(401);
     },
   }
-=======
+
     method:'GET',
     path:'/db',
     handler: function(request, reply){
@@ -100,7 +100,6 @@ var routes = [
   })
     }
 }
->>>>>>> origin/master
 ]
 
 module.exports = routes
