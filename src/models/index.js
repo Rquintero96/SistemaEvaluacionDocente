@@ -29,7 +29,7 @@ Object.keys(db).forEach(function(modelName) {
     db[modelName].associate(db);
   }
 });
-
+sequelize.sync();
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

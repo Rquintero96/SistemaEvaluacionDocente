@@ -12,10 +12,10 @@ var BasicAuth = require('hapi-auth-basic')
 var Bcrypt = require('bcrypt')
 //Modulo para almacenar informacion a traves de la pagina
 var CookieAuth = require('hapi-auth-cookie')  
-
 //creando nuevo servidor
 var server = new Hapi.Server()
-
+//DB.js
+var DB=require("./lib/DB.js");
 ///DEMOSTRACION///
 // hardcoded users object … just for illustration purposes
 var users = {  
@@ -102,6 +102,9 @@ server.register(require('inert'), function(err){
 	       	index: false
 	        }
     	}
+    });
+     models.sequelize.sync().then(function(){
+     console.log('Updated Database');
     });
 });
 

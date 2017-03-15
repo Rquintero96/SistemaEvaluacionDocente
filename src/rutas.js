@@ -1,6 +1,8 @@
 var Boom = require('boom')
 var Bcrypt = require('bcrypt')
-
+var models = require('./models')
+var Sequelize=require('sequelize');
+var sequelize = models.sequelize;
 var routes = [
      {
     method: 'GET',
@@ -70,6 +72,7 @@ var routes = [
     }
 },
 {
+<<<<<<< HEAD
     method: 'GET',
     path: '/perfil',
     config: {
@@ -86,6 +89,18 @@ var routes = [
         reply.view('index').code(401);
     },
   }
+=======
+    method:'GET',
+    path:'/db',
+    handler: function(request, reply){
+        models.sequelize.query("SELECT * FROM user", { type: sequelize.QueryTypes.SELECT})
+  .then(function(users) {
+      reply(users);
+    // We don't need spread here, since only the results will be returned for select queries
+  })
+    }
+}
+>>>>>>> origin/master
 ]
 
 module.exports = routes
