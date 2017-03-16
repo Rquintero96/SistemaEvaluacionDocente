@@ -26,7 +26,6 @@ var users = {
   }
 }
 ///FIN///
-
 //Conexion del servidor
 server.connection({
 	port: 8080
@@ -63,6 +62,22 @@ server.register([
     layout: 'default'
   })
   server.log('info', 'View configuration completed')
+  //COOKIE AUTH
+  server.auth.strategy('session', 'cookie', {
+        password: 'reynaldo-quintero-asher-kleiman-miguel-moreton', // cookie secret
+        cookie: 'session', // Cookie name
+        redirectTo: false, // Let's handle our own redirections
+        isSecure: false, // required for non-https applications
+        ttl: 24* 60 * 60 * 1000 // Set session to 1 day
+    });
+
+  // Print some information about the incoming request for debugging purposes
+  server.ext('onRequest', function (request, next) {
+        console.log(request.path, request.query);
+        next();
+    });
+//FIN COOKIE AUTH
+
 
   // validation function used for hapi-auth-cookie: optional and checks if the user is still existing
   /*var validation = function (request, session, callback) {
