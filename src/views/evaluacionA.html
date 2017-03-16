@@ -3,7 +3,7 @@
 <head>
   <title>Evaluación A</title>
 </head>
-<body>
+<body onload="">
 {{!< layout/default}}
 {{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
 
@@ -20,7 +20,10 @@
 <div> En una escala de evaluación continua de 5 a 1, donde 5 significa que la presencia del factor es ALTAMENTE SATISFACTORIA y 1 que la presencia del factor es INSATISFACTORIA, califique al evaluado en cualquier punto de esa escala (puede trabajar con decimales) y coloque el puntaje en la casilla correspondiente. En caso de no aplicar alguno(s) de los factores, calificar con 0.
 </div>
 
-<div align="center" id="tablaEvaluacion"> <!-- Tabla a ser generada utilizando la base de datos, habrá que definirla en javascript, con input type number y min=0 y max=5-->
+<div align="center"> <!-- Tabla a ser generada utilizando la base de datos, habrá que definirla en javascript, con input type number y min=0 y max=5-->
+  <table id="tablaEvaluacion" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" align="center" width="75%">
+
+  </table>
 </div>
 
 <div>

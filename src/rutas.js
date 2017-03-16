@@ -5,7 +5,7 @@ var Estudiante = require('./models/estudiante')
 var Sequelize=require('sequelize');
 var sequelize = models.sequelize;
 var routes = [
-<<<<<<< HEAD
+
 {
     //prueba
 	method: 'GET',
@@ -19,7 +19,7 @@ var routes = [
 	}
 },
 //VISTAS NORMALES
-=======
+
      {
     method: 'GET',
     path: '/',
@@ -31,7 +31,6 @@ var routes = [
       reply.view('index', data)
     }
   },
->>>>>>> 453c2e9b2cb224075598f2364967d726bb9f25e0
 {
     method: 'GET',
     path: '/registro-estudiantil',

@@ -31,7 +31,7 @@ function buscar(){
 
 	nomApe = nombreCompleto.split(" ");
 
-	Profesor.findOne({
+	profesor.findOne({
   		where: {nombre: nomApe[0], apellido: nomApe[1]}
 	}).then(function(profesor) {
   		//AQUI VA LA BUSQUEDA DE LA INFORMACION DE EVALUACIONES DEL PROFESOR Y SE MUESTRA LA INFORMACION DEPENDIENDO DEPENDIENDO
