@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       }, {
       classMethods: {
         associate: (models) => {
-        Seccion.belongsTo(models.estudiante, {
+        Seccion.belongsToMany(models.estudiante, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
             foreignKey: {
@@ -26,17 +26,18 @@ module.exports = (sequelize, DataTypes) => {
               allowNull: true
             }
           });
-          Seccion.belongsTo(models.materia, {
+          Seccion.hasMany(models.materia, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
             foreignKey: {
               allowNull: false
             }
           });
-        
           
         }
       }
-    });
+      }, {
+    freezeTableName: true // Model tableName will be the same as the model name
+});
     return Seccion;
 };

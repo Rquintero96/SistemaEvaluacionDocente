@@ -24,6 +24,13 @@ var Profesor = sequelize.define('profesor', {
     type: DataTypes.STRING,
     allowNull: false
   },
+          tipo: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          validate:{
+            isEmail: true,
+          }
+        },
   cargo: {
       type: DataTypes.STRING,
       allowNull: false
