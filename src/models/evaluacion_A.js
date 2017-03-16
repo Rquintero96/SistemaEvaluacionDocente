@@ -1,12 +1,28 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-    var estudiante = sequelize.define("estudiante", {
+    var Evaluacion_A = sequelize.define("evaluacion_A", {
         auto: {
           type: DataTypes.BOOLEAN(),
           allowNull: false,
         },
+        nombre_del_evaluado : {
+          type: DataTypes.STRING(),
+          allowNull: false,
+        },
+        nombre_del_evaluador : {
+          type: DataTypes.STRING(),
+          allowNull: false,
+        },
+        periodo : {
+          type: DataTypes.STRING(),
+          allowNull: false,
+        },
+        departamento : {
+          type: DataTypes.STRING(),
+          allowNull: false,
+        },
         cargo_profesor : {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(),
           allowNull: false,
         },
         promedio: {
@@ -18,30 +34,21 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
           fecha: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          validate:{
-            isEmail: true,
-          }
-        },
-        contrasena: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(),
           allowNull: false,
         }
       }, {
       classMethods: {
         associate: (models) => {
-        estudiante.hasMany(models.seccion, {
+        //verificado
+        Evaluacion_A.hasMany(models.respuestas_A, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
-            foreignKey: {
-              allowNull: false
-            }
           });
         }
       }
       }, {
     freezeTableName: true // Model tableName will be the same as the model name
 });
-    return estudiante;
+    return Evaluacion_A;
 };

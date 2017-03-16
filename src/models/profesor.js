@@ -39,14 +39,21 @@ var Profesor = sequelize.define('profesor', {
   }, { 
     classMethods: {
         associate: (models) => {
-        Profesor.hasMany(models.EstudianteSeccion, {
+          //verificado
+          Profesor.hasMany(models.evaluacion_A, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
-            foreignKey: {
-              allowNull: false
-            }
-        });
-          
+          });
+          //verificado
+          Profesor.hasMany(models.evaluacion_B, {
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+          });
+          //verificado
+          Profesor.hasMany(models.seccion, {
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE", 
+          });
         }
           },
       }, {

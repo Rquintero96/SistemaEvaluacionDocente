@@ -1,22 +1,20 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-    var Seccion = sequelize.define("seccion", {
-        Numero: {
+    var Respuestas_A = sequelize.define("respuestas_A", {
+        idA: {
           type: DataTypes.INTEGER(),
           allowNull: false,
         },
-        modalidad: {
-          type: DataTypes.STRING(),
+        idP: {
+          type: DataTypes.INTEGER(),
+          allowNull: false,
+        },
+        promedio: {
+          type: DataTypes.DOUBLE(),
           allowNull: false,
         },
       }, {
-      classMethods: {
-        associate: (models) => {
-          
-        }
-      }
-      }, {
     freezeTableName: true // Model tableName will be the same as the model name
 });
-    return Seccion;
+    return Respuestas_A;
 };
