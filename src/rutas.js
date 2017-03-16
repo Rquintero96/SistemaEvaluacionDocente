@@ -5,6 +5,7 @@ var Estudiante = require('./models/estudiante')
 var Sequelize=require('sequelize');
 var sequelize = models.sequelize;
 var routes = [
+<<<<<<< HEAD
 {
     //prueba
 	method: 'GET',
@@ -18,6 +19,19 @@ var routes = [
 	}
 },
 //VISTAS NORMALES
+=======
+     {
+    method: 'GET',
+    path: '/',
+    handler: function (request, reply) {
+      var data = {
+        message: 'Check the route that requires auth at /basic'
+      }
+
+      reply.view('index', data)
+    }
+  },
+>>>>>>> 453c2e9b2cb224075598f2364967d726bb9f25e0
 {
     method: 'GET',
     path: '/registro-estudiantil',
@@ -78,6 +92,23 @@ var routes = [
 
 //prueba de BDD
 {
+    method: 'GET',
+    path: '/perfil',
+    config: {
+      auth: 'simple',
+      handler: function (request, reply) {
+        reply.view('perfil')
+      }
+    }
+  },
+  {
+    method: 'GET',
+    path: '/logout',
+    handler: function (request, reply) {
+        reply.view('index').code(401);
+    }
+  },
+  {
     method:'GET',
     path:'/db',
     handler: function(request, reply){

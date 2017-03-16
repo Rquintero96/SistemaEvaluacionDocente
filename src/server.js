@@ -79,26 +79,21 @@ server.register([
 //FIN COOKIE AUTH
 
 
-  // validation function used for hapi-auth-cookie: optional and checks if the user is still existing
-  /*var validation = function (request, session, callback) {
-    var username = session.username
-    var user = Users[ username ]
+// validation function used for hapi-auth-basic
+  var basicValidation  = function (request, username, password, callback) {
+    var user = users[ username ]
 
-    if (!user) {
+    if (!user || user==0) {
       return callback(null, false)
     }
 
-    server.log('info', 'user authenticated')
-    callback(err, true, user)
+    Bcrypt.compare(password, user.password, function (err, isValid) {
+      server.log('info', 'user authentication successful')
+      callback(err, isValid, { id: user.id, name: user.name })
+    })
   }
 
-  server.auth.strategy('session', 'cookie', true, {
-    password: 'm!*"2/),p4:xDs%KEgVr7;e#85Ah^WYC',
-    cookie: 'future-studio-hapi-tutorials-cookie-auth-example',
-    redirectTo: '/',
-    isSecure: false,
-    validateFunc: validation
-  })*/
+  server.auth.strategy('simple', 'basic', { validateFunc: basicValidation })
 
   server.log('info', 'Registered auth strategy: cookie auth')
 
