@@ -3,17 +3,21 @@
 <head>
   <title>Principal</title>
 </head>
-<body>
+<body onload="llenar();">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/src/resources/js/principalGeneral.js"></script>
 {{!< layout/default}}
 {{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
 
 
 <div>
-<div class="materialContainer" style="text-align: center;">
-<select id="combo-box">
-  <!-- Aquí irían los profesores a seleccionar para el vicerrectorado y los jefes de departamento, que se habilitaría con jquery u otra herramienta. Se pone cada uno con "<option>"-->
-</select>
-<table id="tabla-principal"> <!-- esta tabla será modificada con jquery u otra herramienta cuando se sepa el tipo de usuario que ingresa a la vista -->
+    <div id="busqueda">
+        Nombre Completo: <input class="mdl-textfield__input" type="text" id="nombre"><br>
+        <button type="button" onclick="buscar();">Buscar</button>
+    </div>
+<br>
+<div>
+<table id="tabla-principal" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" align="center" width="75%"> <!-- esta tabla será modificada con jquery u otra herramienta cuando se sepa el tipo de usuario que ingresa a la vista -->
 <!-- Para profesores: 
     primera columna: materia y sección
     segunda columna: posibilidad de realizar autoevaluación (llevará a la vista evaluación tipo A) 
