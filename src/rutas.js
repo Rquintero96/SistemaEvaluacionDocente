@@ -1,23 +1,10 @@
 var Boom = require('boom')
 var Bcrypt = require('bcrypt')
 var models = require('./models')
-var Estudiante = require('./models/estudiante')
-var Sequelize=require('sequelize');
+var Sequelize= require('sequelize');
 var sequelize = models.sequelize;
 var routes = [
 
-{
-    //prueba
-	method: 'GET',
-	path: '/',
-	handler: function(request, reply){
-		var data = {
-			title: 'Home',
-			message: 'Este es el home'
-		};
-		return reply.view('index',data);
-	}
-},
 //VISTAS NORMALES
 
      {
@@ -126,7 +113,7 @@ var routes = [
     handler: function (request, reply) {
       var username = request.payload.usuario
       var password = request.payload.contra
-      var estudiante = models.sequelize.query("SELECT * FROM estudiante where correo = :key", {model: Estudiante},{ replacements: { key: username }, type: sequelize.QueryTypes.SELECT})
+      var estudiante = models.sequelize.query("SELECT * FROM estudiante where correo = :key",{ replacements: { key: username }, type: sequelize.QueryTypes.SELECT})
       if(!estudiante){
           alert('No existe un estudiante con ese correo')
           reply.view('/login')
