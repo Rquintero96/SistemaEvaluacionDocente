@@ -1,11 +1,9 @@
 var Boom = require('boom')
 var Bcrypt = require('bcrypt')
 var models = require('./models')
-var Estudiante = require('./models/estudiante')
-var Sequelize=require('sequelize');
+var Sequelize= require('sequelize');
 var sequelize = models.sequelize;
 var routes = [
-<<<<<<< HEAD
 {
     //prueba
 	method: 'GET',
@@ -19,19 +17,6 @@ var routes = [
 	}
 },
 //VISTAS NORMALES
-=======
-     {
-    method: 'GET',
-    path: '/',
-    handler: function (request, reply) {
-      var data = {
-        message: 'Check the route that requires auth at /basic'
-      }
-
-      reply.view('index', data)
-    }
-  },
->>>>>>> 453c2e9b2cb224075598f2364967d726bb9f25e0
 {
     method: 'GET',
     path: '/registro-estudiantil',
@@ -127,7 +112,7 @@ var routes = [
     handler: function (request, reply) {
       var username = request.payload.usuario
       var password = request.payload.contra
-      var estudiante = models.sequelize.query("SELECT * FROM estudiante where correo = :key", {model: Estudiante},{ replacements: { key: username }, type: sequelize.QueryTypes.SELECT})
+      var estudiante = models.sequelize.query("SELECT * FROM estudiante where correo = :key",{ replacements: { key: username }, type: sequelize.QueryTypes.SELECT})
       if(!estudiante){
           alert('No existe un estudiante con ese correo')
           reply.view('/login')

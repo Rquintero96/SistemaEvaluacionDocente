@@ -41,7 +41,14 @@ var Jefe = sequelize.define('jefeDepartamento', {
        { 
     classMethods: {
         associate: (models) => {
-        Jefe.hasMany(models.materia, {
+        //verificado
+        Jefe.hasOne(models.departamento, {
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+            foreignKey: 'idJefe'
+        });
+        //verificado
+        Jefe.hasMany(models.evaluacion_A, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
             foreignKey: {

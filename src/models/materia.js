@@ -1,6 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-    var materia = sequelize.define("materia", {
+    var Materia = sequelize.define("materia", {
         nombre: {
           type: DataTypes.STRING,
           allowNull: false,
@@ -12,26 +12,14 @@ module.exports = (sequelize, DataTypes) => {
       }, {
       classMethods: {
         associate: (models) => {
-          materia.belongsTo(models.Departamento, {
+          Materia.hasMany(models.seccion, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
-            foreignKey: {
-              allowNull: false
-            }
           });
-          materia.hasMany(models.seccion, {
-            onDelete: "CASCADE",
-            onUpdate: "CASCADE",
-            foreignKey: {
-              allowNull: false
-            }
-          });
-        
-          
         }
       }
       }, {
     freezeTableName: true // Model tableName will be the same as the model name
 });
-    return materia;
+    return Materia;
 };
