@@ -64,7 +64,7 @@ server.register([
   })
   server.log('info', 'View configuration completed')
   
-
+//QUITA ESTE SERVER.REGISTER
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
 	if(err){

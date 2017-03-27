@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         Pregunta_A.hasOne(models.respuestas_A, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
-            as: 'Enunciado'
+            foreignKey: 'idEnunciado'
           });
         }
       }
