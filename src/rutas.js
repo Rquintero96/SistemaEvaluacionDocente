@@ -36,8 +36,10 @@ var routes = [
     method: 'GET',
     path: '/login',
     handler: function (request, reply) {
-        reply.view('login');
-    }
+                reply.view('login');
+            }
+        
+    
 },
 {
     method: 'GET',
@@ -77,23 +79,23 @@ var routes = [
 //FIN VISTAS NORMALES
 
 //prueba de BDD
-{
-    method: 'GET',
-    path: '/perfil',
-    config: {
-      auth: 'simple',
-      handler: function (request, reply) {
-        reply.view('perfil')
-      }
-    }
-  },
-  {
-    method: 'GET',
-    path: '/logout',
-    handler: function (request, reply) {
-        reply.view('index').code(401);
-    }
-  },
+// {
+//     method: 'GET',
+//     path: '/perfil',
+//     config: {
+//       auth: 'simple',
+//       handler: function (request, reply) {
+//         reply.view('perfil')
+//       }
+//     }
+//   },
+   {
+     method: 'GET',
+     path: '/logout',
+     handler: function (request, reply) {
+         reply.view('index').code(401);
+     }
+   },
   {
     method:'GET',
     path:'/db',
@@ -105,29 +107,79 @@ var routes = [
   })
     }
 },
+//METODO PARA REGISTRO
+{
+    method: 'POST',
+    path: '/registro-estudiantil',
+    config: {
+        handler: function (request, reply) {
+            var correo = request.payload.email;
+            var ced = request.payload.ci;
+	        var pass = request.payload.contra;
+            Bcrypt.genSalt(10, function(err, salt) {
+        if(err) {
+                return console.error(err);
+        }
+
+        Bcrypt.hash(pass, salt, function(err, hash) {
+                if(err) {
+                        return console.error(err);
+                }
+
+            console.log(correo+" "+ced+" "+hash);
+            
+            var user1={};
+            user1.correo = correo;
+            
+            sequelize.query("INSERT INTO estudiantes (CI,correo,tipo,contrasena) VALUES (:cedula,:email,0,:contrasena);",{ replacements: { cedula: ced, email: correo, contrasena: hash }, type: sequelize.QueryTypes.INSERT}).then(function(res) {
+                // Results will be an empty array and metadata will contain the number of affected rows.
+                reply.view('perfil', user1);
+            });
+        });
+                
+            });
+                
+            }
+    }
+},
 //METODO PARA LOGIN
 {
  method: 'POST',
   path: '/login',
   config: {
     handler: function (request, reply) {
-      var username = request.payload.usuario
-      var password = request.payload.contra
-      var estudiante = models.sequelize.query("SELECT * FROM estudiante where correo = :key",{ replacements: { key: username }, type: sequelize.QueryTypes.SELECT})
-      if(!estudiante){
-          alert('No existe un estudiante con ese correo')
-          reply.view('/login')
+      var username = request.payload.email;
+      var password = request.payload.contra;
+      models.sequelize.query("SELECT * FROM estudiantes where correo = :key",{ replacements: { key: username }, type: sequelize.QueryTypes.SELECT}).then(function (estudiante){
+          console.log(estudiante);
+          console.log(estudiante[0].contrasena);
+          if(!estudiante){
+          console.log("sin exito.");
+          reply.view('login');
       }
       else{
-          if(estudiante.contrasena == password){
-              request.cookieAuth.set(estudiante);
-              reply.view('/dashboard')
-          }
-          else{
-              alert('La contraseña no es correcta')
-              reply.view('/login')
-          }
-      }
+          
+        Bcrypt.compare(password, estudiante[0].contrasena, function(err, isValid) {
+            if(err){
+                console.log("too bad");
+                console.log(err);
+            }
+            if(isValid){
+                var user1={};
+                user1.correo = username;
+              reply.view('perfil', user1);
+            }else{
+                reply.view('login');
+            }
+        })
+
+          
+          
+
+     }
+      });
+      
+      
     }
   }
 },

@@ -28,12 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       }, {
       classMethods: {
         associate: (models) => {
-        Evaluacion_B.hasOne(models.respuestas_B, {
+        //verificado
+        Evaluacion_B.hasMany(models.respuestas_B, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
-            foreignKey: {
-              allowNull: false
-            }
           });
         }
       }

@@ -16,27 +16,29 @@
 
       <div class="title">Ingresa</div>
 
-			<a href="/perfil">authenticate</a>
-
     <!-- Textfield with Floating Label -->
+        <div>
+            <form action="/login" method="POST">
     	<div>
+    	    
 		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		    <input class="mdl-textfield__input" type="text" id="email">
+		    <input class="mdl-textfield__input" type="text" id="email" name="email">
 		    <label class="mdl-textfield__label" for="sample3">Correo</label>
 		  </div>
 		</div>
 
       	<div>
       	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		    <input class="mdl-textfield__input" type="password" id="Contraseña">
+		    <input class="mdl-textfield__input" type="password" id="Contraseña" name="contra">
 		    <label class="mdl-textfield__label" for="sample3">Contraseña</label>
 		  </div>
 	    </div>
+	    
       
       <div class="button login">
-         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/basic">
-  		 ¡Entrar!
-		 </button>
+         <input type="submit" value="Entrar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      </div>
+      </form>
       </div>
       <div style="margin-top: 20px;">
       	¿No tienes cuenta todavia? <a href="/registro-estudiantil"> ¡Registrate ya!</a>

@@ -4,6 +4,8 @@
   <title>Registro Estudiantil</title>
 </head>
 <body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/src/resources/js/registro.js"></script>
 {{!< layout/default}}
 {{! The tag above means - insert everything in this file into the {content} of the layout.html template }}
 
@@ -17,30 +19,32 @@
       <div class="title">Regístrate</div>
 
     <!-- Textfield with Floating Label -->
+    <form action="/registro-estudiantil" method="POST">
     	<div>
 		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		    <input class="mdl-textfield__input" type="text" id="email">
+		    <input class="mdl-textfield__input" type="text" id="email" name="email">
 		    <label class="mdl-textfield__label" for="sample3">Correo</label>
 		  </div>
 		</div>
 		
 		<div>
 		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		    <input class="mdl-textfield__input" type="number" id="carnet">
-		    <label class="mdl-textfield__label" for="sample3">Carnet</label>
+		    <input class="mdl-textfield__input" type="number" id="ci" name="ci">
+		    <label class="mdl-textfield__label" for="sample3">C.I</label>
 		  </div>
 		</div>
 
       	<div>
       	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		    <input class="mdl-textfield__input" type="password" id="contra">
+		    <input class="mdl-textfield__input" type="password" id="contra" name="contra">
 		    <label class="mdl-textfield__label" for="sample3">Contraseña</label>
 		  </div>
 	    </div>
-      
+	    <input type="submit" value="Registrar">
+    </form>
 
       <div class="button login">
-         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="registro();">
   		 ¡Listo!
 		 </button>
       </div>

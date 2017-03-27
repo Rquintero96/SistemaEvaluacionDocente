@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       }, {
       classMethods: {
         associate: (models) => {
+        //verificado
         Departamento.hasMany(models.materia, {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",

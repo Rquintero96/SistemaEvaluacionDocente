@@ -16,6 +16,8 @@ var CookieAuth = require('hapi-auth-cookie')
 var server = new Hapi.Server()
 //DB.js
 var DB=require("./lib/DB.js");
+var Sequelize= require('sequelize');
+var sequelize = models.sequelize;
 ///DEMOSTRACION///
 // hardcoded users object … just for illustration purposes
 var users = {  
@@ -49,8 +51,7 @@ server.register([
   }
 
   server.log('info', 'Plugins registered')
-
-  /**
+   /**
    * view configuration
    */
   server.views({
@@ -62,45 +63,7 @@ server.register([
     layout: 'default'
   })
   server.log('info', 'View configuration completed')
-  //COOKIE AUTH
-  server.auth.strategy('session', 'cookie', {
-        password: 'reynaldo-quintero-asher-kleiman-miguel-moreton', // cookie secret
-        cookie: 'session', // Cookie name
-        redirectTo: false, // Let's handle our own redirections
-        isSecure: false, // required for non-https applications
-        ttl: 24* 60 * 60 * 1000 // Set session to 1 day
-    });
-
-  // Print some information about the incoming request for debugging purposes
-  server.ext('onRequest', function (request, next) {
-        console.log(request.path, request.query);
-        next();
-    });
-//FIN COOKIE AUTH
-
-
-// validation function used for hapi-auth-basic
-  var basicValidation  = function (request, username, password, callback) {
-    var user = users[ username ]
-
-    if (!user || user==0) {
-      return callback(null, false)
-    }
-
-    Bcrypt.compare(password, user.password, function (err, isValid) {
-      server.log('info', 'user authentication successful')
-      callback(err, isValid, { id: user.id, name: user.name })
-    })
-  }
-
-  server.auth.strategy('simple', 'basic', { validateFunc: basicValidation })
-
-  server.log('info', 'Registered auth strategy: cookie auth')
-
-  var routes = require('./rutas')
-  server.route(routes)
-  server.log('info', 'Routes registradas')
-})
+  
 
 //Esto permite los archivos estaticos
 server.register(require('inert'), function(err){
@@ -122,6 +85,46 @@ server.register(require('inert'), function(err){
      console.log('Updated Database');
     });
 });
+
+//     //COOKIE AUTH
+//   server.auth.strategy('session', 'cookie', {
+//         password: 'reynaldo-quintero-asher-kleiman-miguel-moreton', // cookie secret
+//         cookie: 'session', // Cookie name
+//         redirectTo: false, // Let's handle our own redirections
+//         isSecure: false, // required for non-https applications
+//         ttl: 24* 60 * 60 * 1000 // Set session to 1 day
+//     });
+
+//   // Print some information about the incoming request for debugging purposes
+//   server.ext('onRequest', function (request, next) {
+//         console.log(request.path, request.query);
+//         next();
+//     });
+// //FIN COOKIE AUTH
+
+// validation function used for hapi-auth-basic
+  var basicValidation  = function (request, username, password, callback) {
+    var user = models.sequelize.query("SELECT * FROM estudiantes where correo=:key",{replacements: { key: username }, type: sequelize.QueryTypes.SELECT})
+
+    if (!user || user==0) {
+      return callback(null, false)
+    }
+
+   Bcrypt.compare(password, user.contrasena, function(err, isValid) {
+      server.log('info', 'user authentication successful')
+      callback(err, isValid, { id: user.id, ci: user.CI })
+    })
+  }
+
+  server.auth.strategy('simple', 'basic', { validateFunc: basicValidation })
+  
+
+  server.log('info', 'Registered auth strategy: cookie auth')
+
+   var routes = require('./rutas')
+  server.route(routes)
+  server.log('info', 'Routes registradas')
+}) 
 
 server.start(err => {
 
